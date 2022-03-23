@@ -1,0 +1,10 @@
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button{
+    align-items: center;
+    justify-content: center;
+}
