@@ -35,10 +35,10 @@ let personaje2 = {
     }
 */
 
-const agregarVerdura = document.getElementsByClassName('btn-success')
-const valueVerdura = document.getElementById('')
-const agregarFruta = document.getElementsByClassName('btn-info')
-const valueFruta = document.getElementById('')
+// const agregarItem = document.getElementsByClassName('btn-success')
+// const valueItem = document.getElementById('verduras')
+const verduras = []
+const frutas = []
 
 const canasta = [
   {
@@ -83,7 +83,7 @@ const canasta = [
   },
   {
     nombre: 'brocoli',
-    tipo: 'brocoli',
+    tipo: 'verdura',
     cantidad: 1
   },
   {
@@ -92,3 +92,29 @@ const canasta = [
     cantidad: 15
   },
 ]
+
+function filtrarCanasta(canasta){
+    canasta.map(function(item){
+        if(item.tipo === 'verdura'){
+            verduras.push(item)
+        } else {
+            frutas.push(item)
+        }
+    })
+    console.log(verduras)
+    console.log(frutas)
+}
+
+filtrarCanasta(canasta)
+
+function agregarFrutaLista(){
+  const x = document.getElementById('nodo').value
+  if(x === undefined || null || ''){
+    alert('no ingresaste nada')
+  }else{
+    let node = document.createElement("LI")             
+    let textnode = document.createTextNode(x)               
+    node.appendChild(textnode)                              
+    document.getElementById("frutas-lista").appendChild(node)
+  }
+}

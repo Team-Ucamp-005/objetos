@@ -12,24 +12,19 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="input-group mb-3 mt-3">
-                <input type="text" class="form-control" placeholder="Frutas">
-            </div>
-            <div class="buttons mb-3">
-                <button type="button" class="btn btn-info">Agregar Fruta</button>
-            </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Verduras">
+                <input id="nodo" type="text" class="form-control mt-3" placeholder="Agregar item">
             </div>
             <div class="buttons">
-                <button type="button" class="btn btn-success">Agregar Verdura</button>
+                <button type="button" class="btn btn-success">Actualizar Verdura</button>
+                <button type="button" onclick="agregarFrutaLista()" class="btn btn-info">Actualizar Fruta</button>
             </div>
         </div>
     </div>
     <div class="listas">
         <div class="frutas">
-            <ul class="frutas-lista">
-                
+            <ul class="frutas-lista" id="frutas-lista">
+                <li>holis</li>
             </ul>
         </div>
         <div class="verduras">
