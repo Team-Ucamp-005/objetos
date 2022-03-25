@@ -25,7 +25,7 @@ let personaje2 = {
 
 /*
   En una recauderia, el vendedor quiere realizar un registro de frutas y verduras que tiene en su local, 
-  y  quiere dividirlos por tipo: “frutas” o “verduras”, crearemos un objeto por cada fruta y verdura, 
+  y  quiere filtrarlo por tipo: “frutas” o “verduras”, crearemos un objeto por cada fruta y verdura, 
   en el cual tendrán como propiedades, “nombre”, “tipo”, “cantidad”
 
     let item = {
@@ -35,12 +35,8 @@ let personaje2 = {
     }
 */
 
-// const agregarItem = document.getElementsByClassName('btn-success')
-// const valueItem = document.getElementById('verduras')
-const verduras = []
-const frutas = []
 
-const canasta = [
+let canasta = [
   {
     nombre: 'Manzana',
     tipo: 'fruta',
@@ -92,29 +88,52 @@ const canasta = [
     cantidad: 15
   },
 ]
+let nuevaCanasta
 
-function filtrarCanasta(canasta){
-    canasta.map(function(item){
-        if(item.tipo === 'verdura'){
-            verduras.push(item)
-        } else {
-            frutas.push(item)
-        }
-    })
-    console.log(verduras)
-    console.log(frutas)
+// filtra segun el tipo de elemento
+function filtrarCanasta() {
+  const tipo = document.getElementById('tipo-filtro').value
+  nuevaCanasta = canasta.filter(function (element) {
+    return element.tipo === tipo
+  })
+  renderLista(nuevaCanasta)
 }
 
-filtrarCanasta(canasta)
 
-function agregarFrutaLista(){
-  const x = document.getElementById('nodo').value
-  if(x === undefined || null || ''){
-    alert('no ingresaste nada')
-  }else{
-    let node = document.createElement("LI")             
-    let textnode = document.createTextNode(x)               
-    node.appendChild(textnode)                              
+// renderiza y muestra la lista de frutas
+function renderLista(canastaRender) {
+  const list = document.getElementById('frutas-lista')
+  list.innerHTML = ''
+  canastaRender.forEach(function (element, index) {
+    let node = document.createElement("LI")
+    let textnode = document.createTextNode(element.nombre + ' ' + element.tipo + ' ' + element.cantidad)
+    node.setAttribute('id', index)
+    node.appendChild(textnode)
     document.getElementById("frutas-lista").appendChild(node)
+  });
+
+}
+
+// agrega un elemento nuevo a la lista y lo renderiza
+function agregarFrutaLista() {
+  const name = document.getElementById('nombre').value
+  const type = document.getElementById('tipo').value
+  const quantity = document.getElementById('cantidad').value
+  if (name === undefined || null || '') {
+    alert('no ingresaste nada')
+  } else {
+    const nuevaCanasta = canasta.slice()
+    nuevaCanasta.push({
+      nombre: name,
+      tipo: type,
+      cantidad: quantity
+    })
+    canasta = nuevaCanasta
+    renderLista(nuevaCanasta)
   }
 }
+
+
+
+// renders
+renderLista(canasta)

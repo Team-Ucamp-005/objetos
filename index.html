@@ -12,26 +12,42 @@
 <body>
     <div class="container">
         <div class="row">
+          <div class="col-md-6">
             <div class="input-group mb-3">
-                <input id="nodo" type="text" class="form-control mt-3" placeholder="Agregar item">
+                <input id="nombre" type="text" class="form-control mt-3" placeholder="Agregar fruta">
+                <input id="tipo" type="text" class="form-control mt-3" placeholder="Agregar tipo">
+                <input id="cantidad" type="text" class="form-control mt-3" placeholder="Agregar cantidad">
+              </div>
+              <div class="buttons">
+                <button type="button" onclick="agregarFrutaLista()" class="btn btn-info">Agregar</button>
+              </div>
             </div>
+            <div class="col-md-6">
+              <div class="input-group mb-3">
+                <select name="type" id="tipo-filtro" class="form-control mt-3">
+                  <option value="fruta">fruta</option>
+                  <option value="verdura">verdura</option>
+                </select>
+              </div>
             <div class="buttons">
-                <button type="button" class="btn btn-success">Actualizar Verdura</button>
-                <button type="button" onclick="agregarFrutaLista()" class="btn btn-info">Actualizar Fruta</button>
+              <button type="button" class="btn btn-success"onclick="filtrarCanasta()" >filtrar</button>
             </div>
+          </div>
         </div>
     </div>
-    <div class="listas">
-        <div class="frutas">
-            <ul class="frutas-lista" id="frutas-lista">
-                <li>holis</li>
-            </ul>
-        </div>
-        <div class="verduras">
-            <ul class="verduras-lista">
-
-            </ul>
-        </div>
+    <div class="row">
+      <div class="listas">
+          <div class="frutas">
+              <ul class="frutas-lista" id="frutas-lista">
+                  <li>holis</li>
+              </ul>
+          </div>
+          <div class="verduras">
+              <ul class="verduras-lista">
+  
+              </ul>
+          </div>
+      </div>
     </div>
 </body>
 </html>
