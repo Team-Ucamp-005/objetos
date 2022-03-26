@@ -1,20 +1,19 @@
-// // objetos
+/*
 
-// let personaje1 = {
-//   "nombre": "Timmy",
-//   "raza": "dinosaurio",
-//   "edad": 65000000,
-//   "peso": 8,
-//   "vivo": false,
-//   "vamos_a_necesitar_otro_trimmy": function () {
-//     if (!this.vivo) {
-//       console.log('vamos a necesitar otro timmy!!')
-//     }
-//   }
-// }
+En una recauderia, el vendedor quiere realizar un registro de frutas y verduras que tiene en su local, y  quiere filtrar por tipo: “frutas” o “verduras”, 
+crearemos un objeto por cada fruta y verdura, en el cual tendrán como propiedades, “nombre”, “tipo”, “cantidad”
 
-// let personaje2 = {
-//   nombre: 'Monkey D. Luffy',
+  let item = {
+    nombre: “Manzana”,
+    tipo: “fruta”,
+    cantidad: 5
+  }
+
+*/
+
+
+// let personaje = {
+//   "nombre": 'Monkey D. Luffy',
 //   ocupacion: 'pirata',
 //   edad: 19,
 //   transformar: function () {
@@ -22,187 +21,211 @@
 //   }
 // }
 
+// console.log(personaje.nombre)
+// console.log(personaje["ocupacion"])
+// personaje.transformar()
 
-// /*
-//   En una recauderia, el vendedor quiere realizar un registro de frutas y verduras que tiene en su local,
-//   y  quiere filtrarlo por tipo: “frutas” o “verduras”, crearemos un objeto por cada fruta y verdura,
-//   en el cual tendrán como propiedades, “nombre”, “tipo”, “cantidad”
-
-//     let item = {
-//       nombre: “Manzana”,
-//       tipo: “fruta”,
-//       cantidad: 5
-//     }
-// */
-
-
-// let canasta = [
-//   {
-//     nombre: 'Manzana',
-//     tipo: 'fruta',
-//     cantidad: 10
-//   },
-//   {
-//     nombre: 'aguacate',
-//     tipo: 'fruta',
-//     cantidad: 10
-//   },
-//   {
-//     nombre: 'sandia',
-//     tipo: 'fruta',
-//     cantidad: 3
-//   },
-//   {
-//     nombre: 'melon',
-//     tipo: 'fruta',
-//     cantidad: 5
-//   },
-//   {
-//     nombre: 'naranja',
-//     tipo: 'fruta',
-//     cantidad: 10
-//   },
-//   {
-//     nombre: 'papa',
-//     tipo: 'verdura',
-//     cantidad: 10
-//   },
-//   {
-//     nombre: 'zanahoria',
-//     tipo: 'verdura',
-//     cantidad: 8
-//   },
-//   {
-//     nombre: 'apio',
-//     tipo: 'verdura',
-//     cantidad: 5
-//   },
-//   {
-//     nombre: 'brocoli',
-//     tipo: 'verdura',
-//     cantidad: 1
-//   },
-//   {
-//     nombre: 'perejil',
-//     tipo: 'verdura',
-//     cantidad: 15
-//   },
-// ]
-// let nuevaCanasta
-
-// // filtra segun el tipo de elemento
-// function filtrarCanasta() {
-//   const tipo = document.getElementById('tipo-filtro').value
-//   nuevaCanasta = canasta.filter(function (element) {
-//     return element.tipo === tipo
-//   })
-//   renderLista(nuevaCanasta)
+// for (const llave in personaje) {
+//   console.log(`${llave}: ${personaje[llave]}`);
 // }
 
 
-// // renderiza y muestra la lista de frutas
-// function renderLista(canastaRender) {
-//   const list = document.getElementById('frutas-lista')
-//   list.innerHTML = ''
-//   canastaRender.forEach(function (element, index) {
-//     let node = document.createElement("LI")
-//     let textnode = document.createTextNode(element.nombre + ' ' + element.tipo + ' ' + element.cantidad)
-//     node.setAttribute('id', index)
-//     node.appendChild(textnode)
-//     document.getElementById("frutas-lista").appendChild(node)
-//   });
+// let { edad, ocupacion, nombre } = personaje;
+
+// console.log('-------------------')
+// console.log('nombre', nombre)
+// console.log('ocupacion', ocupacion)
+// console.log('edad', edad)
+// console.log('-------------------')
+
+// let arr = ['manzana', 'narnaja', 'cereza']
+
+// let [pos0, pos1, pos2] = arr
+// console.log('-------------------')
+// console.log('manzana', pos0)
+// console.log('naranja', pos1)
+// console.log('cereza', pos2)
+// console.log('-------------------')
+
+
+let canasta = [
+  {
+    nombre: "Manzana",
+    tipo: "fruta",
+    cantidad: 5
+  },
+  {
+    nombre: "mango",
+    tipo: "fruta",
+    cantidad: 30
+  },
+  {
+    nombre: "naranja",
+    tipo: "fruta",
+    cantidad: 50
+  },
+  {
+    nombre: "brocoli",
+    tipo: "verdura",
+    cantidad: 20
+  },
+  {
+    nombre: "mamey",
+    tipo: "fruta",
+    cantidad: 5
+  },
+  {
+    nombre: "melon",
+    tipo: "fruta",
+    cantidad: 15
+  },
+  {
+    nombre: "aguacate",
+    tipo: "fruta",
+    cantidad: 100
+  },
+  {
+    nombre: "apio",
+    tipo: "verdura",
+    cantidad: 80
+  },
+  {
+    nombre: "espinaca",
+    tipo: "verdura",
+    cantidad: 20
+  },
+];
+
+console.log('canasta original', canasta)
+
+function filtrarCanasta() {
+  let valorFiltro = document.getElementById('tipo-filtro').value
+  console.log(valorFiltro)
+  const canastaFilter = canasta.filter(function (item) { return item.tipo === valorFiltro });
+  renderLista(canastaFilter)
+  console.log('canasta filtrada', canastaFilter);
+};
+
+// console.log(document)
+
+function renderLista(elQueQuieras) {
+  // se define list asignandole el objeto del elemento html con el id lista
+  const list = document.getElementById('lista')
+  // al ser asignado list con este objeto utilizamos su metodo innerHTML para limpiar los valores que tenga dentro
+  list.innerHTML = '';
+  // se itera el arreglo 'elQueQuieras' 
+  elQueQuieras.forEach(function (element, index) {
+    // en cada vuelta del arreglo se define la variable nodo creando un elemento <li></li>
+    let nodo = document.createElement('LI');
+    // en cada vuelta del arreglo se define la variable textNodo creando el texto concatenando los valores del objeto mapeando element
+    let textNodo = document.createTextNode(element.nombre + ' ' + element.tipo + ' ' + element.cantidad)
+    // le agregamos el atributo id con el numero de la posicion que tiene este elemento <li id="0"></li>
+    nodo.setAttribute('id', index)
+    //insertamos el texto dentro de nodo utilizando appendChild
+    nodo.appendChild(textNodo)
+    // obtenemos el elemento lista por medio de su id e insertamos el elemento nodo como su hijo
+    document.getElementById('lista').appendChild(nodo)
+  })
+};
+
+
+function agregarItem() {
+  const name = document.getElementById('nombre').value;
+  console.log(name)
+  const type = document.getElementById('tipo').value;
+  console.log(type)
+  const quantity = document.getElementById('cantidad').value;
+  console.log(quantity)
+
+  const obj = {
+    nombre: name,
+    tipo: type,
+    cantidad: quantity
+  }
+
+  canasta.push(obj)
+  filtrarCanasta()
+}
+
+// filtrarCanasta();
+
+renderLista(canasta)
+
+
+
+
+//clases
+// Definimos una clase
+// clase padre
+// class Animal {
+//   constructor(nombre) {
+//     this.nombre = nombre
+//   }
+
+//   hablar() {
+//     console.log(this.nombre + ' hace ruido')
+//   }
 
 // }
 
-// // agrega un elemento nuevo a la lista y lo renderiza
-// function agregarFrutaLista() {
-//   const name = document.getElementById('nombre').value
-//   const type = document.getElementById('tipo').value
-//   const quantity = document.getElementById('cantidad').value
-//   if (name === undefined || null || '') {
-//     alert('no ingresaste nada')
-//   } else {
-//     const nuevaCanasta = canasta.slice()
-//     nuevaCanasta.push({
-//       nombre: name,
-//       tipo: type,
-//       cantidad: quantity
-//     })
-//     canasta = nuevaCanasta
-//     renderLista(nuevaCanasta)
+// // instanciar una clase
+// const jirafa = new Animal('Jirafa');
+
+// console.log('Animal dice: ' + jirafa.nombre)
+
+// jirafa.hablar()
+
+
+
+// class Perro extends Animal {
+//   constructor(nombre) {
+//     super(nombre)
+//   }
+
+//   hablar() {
+//     return `${this.nombre} ladra`
 //   }
 // }
 
+// const perro = new Perro('Firulais')
+
+// console.log('perro dice:', perro.hablar())
 
 
-// // renders
-// renderLista(canasta)
+// class Rectangulo {
+//   constructor(alto, ancho) {
+//     // Con la palabra `this` se hace referencia al ámbito de la clase
+//     // Las propiedades `alto` y `ancho` representan el estado de la clase
+//     this.alto = alto;
+//     this.ancho = ancho;
+// otra manera de crear metodos privados
+      // this.calc = this.calcularArea()
+//   }
+
+//   // Getter (encapsulamiento)
+//   get area() {
+//     return this.calcularArea();
+//   }
+
+//   // Método, comportamiento de la clase
+//   calcularArea() {
+//     return this.alto * this.ancho;
+//   }
+// };
+
+// let figura = new Rectangulo(123, 200);
+// console.log(figura.calcularArea())
 
 
 
-let arr = []
 
-function agregarLibro(autor, title) {
-  arr.push({
-    autor: autor,
-    title: title
-  })
-}
 
-function imrpimirLibros() {
-  console.log(arr)
-}
 
-/*
-Dado un string con cualquier palabra, muestra cual es la letra que más se repite en la palabra y la cantidad que aparece en la misma
-*/
 
-function letterRepeat(str) {
-  let arr = str.split('')
-  let obj = {}
-  let max = 0
-  let maxLetter = ''
-  arr.forEach(function (element) {
-    if (obj[element] === undefined) {
-      obj[element] = 1
-    } else {
-      obj[element]++
-    }
-  })
-  console.log('pokemon', obj)
-  for (let key in obj) {
-    console.log('pokemon 2', key)
-    if (obj[key] > max) {
-      max = obj[key]
-      maxLetter = key
-    }
-  }
-  console.log(maxLetter + ' ' + max)
-}
-letterRepeat('parangaracutirimicuario')
-letterRepeat('bubbles')
 
-// Crear un método que permita agregar un nuevo valor a un objeto global 
-// y si ya existe esa propiedad, imprima un mensaje de que ya existe. 
-// Si no, que agregue la propiedad.
 
-let arbol = {
-    nombre: 'eucalipto',
-    altura: '20m',
-}
 
-let newElement = ['altitud', '20m']
 
-function actualizar(arbol, newElement){
-  let nuevoArr = Object.entries(arbol)
-  if(Object.keys(arbol).includes(newElement)){
-    
-  } else {
-      nuevoArr.push(newElement)
-      console.log(nuevoArr)
-      let nuevoArbol =  Object.fromEntries(nuevoArr)
-      console.log(nuevoArbol)
-  }
-}
 
-actualizar(arbol, newElement)
+
+
