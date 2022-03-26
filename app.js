@@ -181,3 +181,28 @@ function letterRepeat(str) {
 }
 letterRepeat('parangaracutirimicuario')
 letterRepeat('bubbles')
+
+// Crear un método que permita agregar un nuevo valor a un objeto global 
+// y si ya existe esa propiedad, imprima un mensaje de que ya existe. 
+// Si no, que agregue la propiedad.
+
+let arbol = {
+    nombre: 'eucalipto',
+    altura: '20m',
+}
+
+let newElement = ['altitud', '20m']
+
+function actualizar(arbol, newElement){
+  let nuevoArr = Object.entries(arbol)
+  if(Object.keys(arbol).includes(newElement)){
+    
+  } else {
+      nuevoArr.push(newElement)
+      console.log(nuevoArr)
+      let nuevoArbol =  Object.fromEntries(nuevoArr)
+      console.log(nuevoArbol)
+  }
+}
+
+actualizar(arbol, newElement)
